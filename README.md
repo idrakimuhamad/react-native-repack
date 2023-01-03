@@ -2,19 +2,19 @@
 
 ## Get started
 
-Install deps
+Install deps of the workspaces
 
 ```sh
 yarn
 ```
 
-Start all of the bundler
+Start all of the bundler in workspaces
 
 ```sh
 yarn concurrent
 ```
 
-Run the (iOS) app
+Run the host (iOS) app
 
 ```sh
 yarn host:ios
