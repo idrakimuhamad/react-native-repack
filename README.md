@@ -17,5 +17,5 @@ yarn concurrent
 Run the (iOS) app
 
 ```sh
-host:ios
+yarn host:ios
 ```
