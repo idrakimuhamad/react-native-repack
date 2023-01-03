@@ -1,4 +1,4 @@
-# Module-Federation on React-Native with rePack
+# Module-Federation on React-Native with Re.Pack
 
 ## Get started
 
