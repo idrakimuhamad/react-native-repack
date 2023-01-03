@@ -2,6 +2,14 @@
   "name": "repack-rn-monorepo",
   "version": "0.0.1",
   "private": true,
+  "scripts": {
+    "concurrent": "concurrently -P 'yarn:start:*(!standalone) {1}'",
+    "start:products": "yarn workspace products run start",
+    "start:standalone:products": "yarn workspace products run start:standalone",
+    "products:ios": "yarn workspace products run ios",
+    "start:host": "yarn workspace host run start",
+    "host:ios": "yarn workspace host run ios"
+  },
   "workspaces": [
     "apps/*",
     "packages/**/*"
@@ -10,5 +18,8 @@
   "license": "MIT",
   "resolutions": {
     "@types/react": "^18"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
   }
 }
