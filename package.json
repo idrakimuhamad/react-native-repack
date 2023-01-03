@@ -1,0 +1,14 @@
+{
+  "name": "repack-rn-monorepo",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/**/*"
+  ],
+  "packageManager": "yarn@3.2.4",
+  "license": "MIT",
+  "resolutions": {
+    "@types/react": "^18"
+  }
+}

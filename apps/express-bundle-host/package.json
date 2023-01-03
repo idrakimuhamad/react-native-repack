@@ -1,0 +1,11 @@
+{
+  "name": "express-bundle-host",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
