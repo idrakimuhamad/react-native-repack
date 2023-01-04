@@ -23,6 +23,7 @@ ScriptManager.shared.addResolver(async (scriptId, caller) => {
       // app1: `http://localhost:4040/version-${
       // version ?? '1'
       // }/app1/ios/[name][ext]`,
+      profile: 'http://localhost:9001/[name][ext]',
       products: __DEV__
         ? 'http://localhost:9000/[name][ext]'
         : `http://localhost:4040/version-${bundleVersion}/products/${Platform.OS}/[name][ext]`,

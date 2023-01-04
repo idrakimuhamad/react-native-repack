@@ -101,7 +101,7 @@ const App = () => {
               height: 40,
             }}
           />
-          <Section title="App: Products">Version 4.</Section>
+          <Section title="Micro-app: Products">Version 4.</Section>
           <LearnMoreLinks />
         </View>
       </ScrollView>

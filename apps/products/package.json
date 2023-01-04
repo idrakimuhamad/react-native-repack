@@ -11,7 +11,7 @@
     "ios": "react-native run-ios --no-packager",
     "ios:metro": "react-native run-ios",
     "start": "react-native webpack-start --port 9000",
-    "start:standalone": "STANDALONE=1 react-native webpack-start --port 9001",
+    "start:standalone": "STANDALONE=1 react-native webpack-start --port 9000",
     "bundle": "npx react-native webpack-bundle --platform ios --dev false --entry-file index.js",
     "clean:bundle": "rm -rf build",
     "test": "jest",
