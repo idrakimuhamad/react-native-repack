@@ -1,7 +1,3 @@
-# Todo
-
-- React-navigation with remote chunks
-
 # Findings
 
 - Initial Loading remote in development took considerable time. Micro-app `products` remote only a basic sample RN introductory screen, and took 7 seconds to finish loading. Subsequent refresh should be faster.
@@ -15,6 +11,24 @@
 - log output from the app doesn't pipe to the webpack terminal (can rely on other tool like Flipper, but took away a simple method)
 - Error thrown doesn't always point to the right stacktrace/filename or even correct error. Will be hard to debug.
 - Remote bundle from micro-app update works with a certain URL management (eg versioning). However, Re.Pack is not an OTA solution, thus it doesn't have hash or bundle management and proper update solution. It will just invalidate the old bundle and download new bundle, replace and cache it, and execute the bundle. Also, whenever the remote bundle is inaccessible, if there are no cached bundle exists in app, it will crash the app in release build.
-- \*Creating navigation stack _inside_ the micro-app and loading in host app seems get the remote loading indefinitely.
 - Host application can't use remotes
 - Native module dependencies must be available in host app too (eg both microapp and host app have the same deps) and to be added into `shared` configuration, as same as `react` and `react-Native`
+- Putting `console.log` inside the app root somehow crash the app (standalone), with `invalid expression encountered` (also not mentioning the exact position of the issue)
+
+  ```jsx
+  const App = () => {
+
+      useEffect(() => {
+          console.log('app'); // crash
+      }, []);
+
+      return (...)
+  }
+  ```
+
+## Navigation
+
+- Having react-navigation stack created within micro-app and loaded into remote causing the host app to load remote infinitely
+- Navigation likely need to be initialized within the host, though this will complicates the micro-app development as it also will have its own stack (for development purposes) but it also need to know the host routes so it would know the screen name that it would go. One way share the host navigation stack routes, and making sure both micro and host app use the same navigation name.
+- This means it is going to produce redundancy navigation stack configuration since one need to exists in micro-app and also need to be available in the host app.
+- Any modular approach would need the same approach.
