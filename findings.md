@@ -7,6 +7,7 @@
 - Initial Loading remote in development took considerable time. Micro-app `products` remote only a basic sample RN introductory screen, and took 7 seconds to finish loading. Subsequent refresh should be faster.
 - In release build, with a small bundle seems fine (might affect UX if wasn't manage properly)
 - static assets (images, fonts) within micro-app doesn't load inside host app. Works fine in standalone micro-app. [#147](https://github.com/callstack/repack/issues/147#issuecomment-1008792049)
+- The need to use remote URL assets would be drawback on UI presentation due to network latency to download the image first.
 - Fast-reload for host/micro-app changes _slightly_ slower
 - Fast-reload doesn't work for micro-app within host app. It works in standalone. (have to enable first)
 - On a basic app, startup time seems similar, probably due to host app is just regular RN app with main bundle. The speed also could come from Hermes.
