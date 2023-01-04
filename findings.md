@@ -16,3 +16,5 @@
 - Error thrown doesn't always point to the right stacktrace/filename or even correct error. Will be hard to debug.
 - Remote bundle from micro-app update works with a certain URL management (eg versioning). However, Re.Pack is not an OTA solution, thus it doesn't have hash or bundle management and proper update solution. It will just invalidate the old bundle and download new bundle, replace and cache it, and execute the bundle. Also, whenever the remote bundle is inaccessible, if there are no cached bundle exists in app, it will crash the app in release build.
 - \*Creating navigation stack _inside_ the micro-app and loading in host app seems get the remote loading indefinitely.
+- Host application can't use remotes
+- Native module dependencies must be available in host app too (eg both microapp and host app have the same deps) and to be added into `shared` configuration, as same as `react` and `react-Native`
