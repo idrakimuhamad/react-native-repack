@@ -8,14 +8,14 @@ import App from './App';
 ScriptManager.shared.setStorage(AsyncStorage);
 ScriptManager.shared.addResolver(async (scriptId, caller) => {
   // console.log('addresolver called');
-  let bundleVersion = 1
+  let bundleVersion = 1;
 
   if (!__DEV__) {
-    const { version } = await fetch('http://localhost:4040/version').then((res) =>
-      res.json()
+    const { version } = await fetch('http://localhost:4040/version').then(
+      (res) => res.json()
     );
 
-    bundleVersion = version
+    bundleVersion = version;
   }
 
   const resolveURL = Federated.createURLResolver({
@@ -25,9 +25,7 @@ ScriptManager.shared.addResolver(async (scriptId, caller) => {
       // }/app1/ios/[name][ext]`,
       products: __DEV__
         ? 'http://localhost:9000/[name][ext]'
-        : `http://localhost:4040/version-${bundleVersion}/products/${
-            Platform.OS
-          }/[name][ext]`,
+        : `http://localhost:4040/version-${bundleVersion}/products/${Platform.OS}/[name][ext]`,
     },
   });
 

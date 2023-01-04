@@ -10,7 +10,7 @@ export default function App() {
   return (
     <SafeAreaView>
       <Text>Host App</Text>
-      
+
       <React.Suspense fallback={<Text>Loading Products...</Text>}>
         <Products />
       </React.Suspense>
