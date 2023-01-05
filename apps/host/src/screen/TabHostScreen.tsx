@@ -1,8 +1,12 @@
-import { View, Text } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Federated } from '@callstack/repack/client';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { CompositeScreenProps } from '@react-navigation/native';
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import { RootStackParamList, RootTabParamList } from '../navigation';
 
 const ProfileDetails = React.lazy(() =>
   Federated.importModule('profile', 'profile-comp')
@@ -15,7 +19,12 @@ const user = {
   email: 'johndoe@example.com',
 };
 
-export default function TabHostScreen() {
+export type TabHostScreenProps = CompositeScreenProps<
+  BottomTabScreenProps<RootTabParamList, 'TabHost'>,
+  NativeStackScreenProps<RootStackParamList, 'Root'>
+>;
+
+export default function TabHostScreen({ navigation }: TabHostScreenProps) {
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView>
@@ -30,6 +39,28 @@ export default function TabHostScreen() {
           <React.Suspense fallback={<Text>Loading...</Text>}>
             <ProfileDetails user={user} />
           </React.Suspense>
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            padding: 24,
+          }}
+        >
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => navigation.navigate('Product')}
+          >
+            <View
+              style={{
+                paddingHorizontal: 12,
+                paddingVertical: 6,
+                backgroundColor: '#3b82f6',
+                borderRadius: 4,
+              }}
+            >
+              <Text style={{ color: 'white' }}>Go to product screen</Text>
+            </View>
+          </Pressable>
         </View>
       </SafeAreaView>
     </View>

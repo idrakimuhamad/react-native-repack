@@ -251,7 +251,7 @@ export default env => {
         name: 'products',
         exposes: {
           './App': './App.tsx',
-          './OtherComponent': './src/OtherComponent.tsx',
+          'product-screen': './src/screen/ProductScreen.tsx',
         },
         shared: {
           react: {
